@@ -14,4 +14,4 @@ let sum = function(){
   return result
 }
 
-console.log(sum()) // 233168
+console.log("Solved: ", sum());

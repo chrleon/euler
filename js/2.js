@@ -3,17 +3,26 @@
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 const max = 4000000
-
 let isEven = (n) =>  n%2;
-
 let fibonacci = () => {
+
   let fibo = [{current: 1, prev: 0}];
+  let evenFibo = [];
   let next = 0;
-  for (let i = 0; i < 100; i++) {
+  let i = 0;
+
+  for (let i = 0; fibo[i].current < max; i++) {
     next = fibo[i].prev + fibo[i].current;
     fibo.push({current :next, prev: fibo[i].current})
+    if(!isEven(fibo[i].current)) {
+      evenFibo.push(fibo[i].current);
+    }
   }
 
-  //return fibo;
+  return evenFibo.reduce((total, num) => {
+    return total + num;
+  },0);
+
 }
-fibonacci();
+
+console.log("solved: ", fibonacci());
